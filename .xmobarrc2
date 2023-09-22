@@ -12,19 +12,22 @@
    -- trayer
    -- 'dtos-local-bin' (from dtos-core-repo)
 
-Config { font            = "Ubuntu Bold 9"
-       , additionalFonts = [ "Mononoki 11"
-                           , "Font Awesome 6 Free Solid 12"
-                           , "Font Awesome 6 Brands 12"
+Config { font            = "Ubuntu Bold 11"
+       , additionalFonts = [ "Mononoki 13"
+                           , "Font Awesome 6 Free Solid 11"
+                           , "Font Awesome 6 Brands 11"
                            ]
-       , bgColor      = "#282a36"
-       , fgColor      = "#D8DEE9"
+       , bgColor      = "#121212"
+       , fgColor      = "#FFFFFF"
+       , border = NoBorder
+       , borderColor = "grey"
+       , alpha = 215
        -- Position TopSize and BottomSize take 3 arguments:
        --   an alignment parameter (L/R/C) for Left, Right or Center.
        --   an integer for the percentage width, so 100 would be 100%.
        --   an integer for the minimum pixel height for xmobar, so 24 would force a height of at least 24 pixels.
        --   NOTE: The height should be the same as the trayer (system tray) height.
-       , position       =  Static { xpos = 1920, ypos = 1052, width =1920 , height = 28 }
+       , position       =  Static { xpos = 1920, ypos = 1045, width =1920 , height = 35 }
        , lowerOnStart = True 
        , hideOnStart  = False
        , allDesktops  = True
@@ -44,7 +47,7 @@ Config { font            = "Ubuntu Bold 9"
                         -- Battery
                     , Run BatteryP ["BAT0"] ["-t", "<fn=2>\xf240</fn> <acstatus> [<left>%]"] 360
                         -- Time and date
-                    , Run Date "  %H:%M:%S - %d %b %Y  " "date" 10
+                    , Run Date "  %H:%M:%S - %a %d %b %Y  " "date" 10
                         -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
 		    , Run Volume "default" "Master" ["-t", "<fn=2>\xf028</fn>  [<volume>%]" ] 10
 		    
@@ -52,5 +55,5 @@ Config { font            = "Ubuntu Bold 9"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<box type=Bottom width=2 mb=2 color=#8be9fd><fc=#8be9fd><fn=1> ARCH %kernel%</fn> </fc></box> <box type=Bottom width=2 mb=2 color=#ffb86c> %StdinReader% </box>}<box type=Bottom width=2 mb=2 color=#ffb86c>%date%</box>{ <box type=Bottom width=2 mb=2 color=#50fa7b><fc=#50fa7b><action=`alacritty -e htop`>%cpu%</action></fc></box> <box type=Bottom width=2 mb=2 color=#6272a4><fc=#6272a4><action=`alacritty -e htop`>%memory%</action></fc></box> <box type=Bottom width=2 mb=2 color=#f1fa8c><fc=#f1fa8c>%disku%</fc></box> <box type=Bottom width=2 mb=2 color=#bd93f9><fc=#bd93f9>  %uptime%</fc></box> <box type=Bottom width=2 mb=2 color=#ff79c6><fc=#ff79c6>%default:Master%</fc></box> <box type=Bottom width=2 mb=2 color=#ff5555><fc=#ff5555>%battery%</fc></box>" }
+       , template = "<box type=Bottom width=2 mb=2 color=#8be9fd><fc=#8be9fd><fn=1> ARCH %kernel%</fn> </fc></box> <box type=Bottom width=2 mb=2 color=#ffb86c> %StdinReader% </box>}<box type=Bottom width=2 mb=2 color=#ffb86c>%date%</box>{ <box type=Bottom width=2 mb=2 color=#50fa7b><fc=#50fa7b><action=`alacritty -e htop`>%cpu%</action></fc></box>  |  <box type=Bottom width=2 mb=2 color=#6272a4><fc=#6272a4><action=`alacritty -e htop`>%memory%</action></fc></box>  |  <box type=Bottom width=2 mb=2 color=#f1fa8c><fc=#f1fa8c>%disku%</fc></box>  |  <box type=Bottom width=2 mb=2 color=#bd93f9><fc=#bd93f9>  %uptime%</fc></box>  |  <box type=Bottom width=2 mb=2 color=#ff79c6><fc=#ff79c6>%default:Master%</fc></box>  |  <box type=Bottom width=2 mb=2 color=#ff5555><fc=#ff5555>%battery%</fc></box>  |  " }
 
